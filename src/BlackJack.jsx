@@ -166,17 +166,15 @@ export default function BlackJack({ onGameStart, isGameActive }) {
                 let currentScore = calculateScore(currentHand);
 
                 while (currentScore < 17) {
-                    await new Promise(r => setTimeout(r, 500)); // Small delay for realism
+                    await new Promise(r => setTimeout(r, 500));
                     const card = currentDeck.pop();
                     currentHand.push(card);
                     currentScore = calculateScore(currentHand);
-                    // Update state properly for animation
                     setDeck([...currentDeck]);
                     setDealerHand([...currentHand]);
                     setScore(prev => ({ ...prev, dealer: currentScore }));
                 }
 
-                // Final state update just to be sure
                 setDeck(currentDeck);
                 setDealerHand(currentHand);
                 setScore(prev => ({ ...prev, dealer: currentScore }));
@@ -202,10 +200,7 @@ export default function BlackJack({ onGameStart, isGameActive }) {
             };
             playDealer();
         }
-    }, [gameState]); // dependency should ideally include deck/hands but for this logic it's tricky.
-    // The previous implementation had a simplified loop. The delay is nice but 'await' inside map/loop needs care.
-    // I added a small delay logic but wait... standard useEffect can't be async.
-    // The function inside is async, so it's fine.
+    }, [gameState]);
 
     const styles = `
         @keyframes dealCard {
