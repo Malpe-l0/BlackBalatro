@@ -241,28 +241,28 @@ export default function BlackJack({ onGameStart, isGameActive }) {
 
     const handStyle = {
         display: 'flex',
-        gap: '10px',
+        gap: '17px',
         justifyContent: 'center',
-        marginBottom: '10px'
+        marginBottom: '17px'
     };
 
     const cardStyle = {
-        width: '100px',
+        width: '170px',
         height: 'auto',
-        borderRadius: '5px'
+        borderRadius: '8px'
     };
 
     const buttonBaseStyle = {
         fontFamily: 'm6x11, rubik, sans-serif',
-        fontSize: '28px',
+        fontSize: '48px',
         lineHeight: '1.25',
         fontWeight: 'normal',
         color: 'white',
-        textShadow: '2px 2px black',
-        borderRadius: '10px',
+        textShadow: '3px 3px black',
+        borderRadius: '17px',
         border: 'none',
-        padding: '12px 30px',
-        margin: '0 10px',
+        padding: '20px 50px',
+        margin: '0 16px',
         cursor: 'pointer',
         transition: 'transform 0.1s',
     };
@@ -270,26 +270,26 @@ export default function BlackJack({ onGameStart, isGameActive }) {
     const redButtonStyle = {
         ...buttonBaseStyle,
         backgroundColor: '#e63946',
-        filter: 'drop-shadow(0px 6px 0px #9d0208)'
+        filter: 'drop-shadow(0px 10px 0px #9d0208)'
     };
 
     const blueButtonStyle = {
         ...buttonBaseStyle,
         backgroundColor: '#457b9d',
-        filter: 'drop-shadow(0px 6px 0px #1d3557)'
+        filter: 'drop-shadow(0px 10px 0px #1d3557)'
     };
 
     return (
         <div style={containerStyle}>
             <style>{styles}</style>
 
-            <div style={{ position: 'absolute', top: 10, right: 30, textAlign: 'right', zIndex: 30 }}>
-                <div style={{ fontSize: '1.5rem', color: '#ffd700', textShadow: '2px 2px black' }}>streak: {currentStreak} 🔥</div>
-                <div style={{ fontSize: '1rem', color: '#ccc', textShadow: '1px 1px black' }}>best: {bestStreak} 🏆</div>
+            <div style={{ position: 'absolute', top: 17, right: 50, textAlign: 'right', zIndex: 30 }}>
+                <div style={{ fontSize: '2.5rem', color: '#ffd700', textShadow: '3px 3px black' }}>streak: {currentStreak} 🔥</div>
+                <div style={{ fontSize: '1.7rem', color: '#ccc', textShadow: '2px 2px black' }}>best: {bestStreak} 🏆</div>
             </div>
 
             <div style={{ textAlign: 'center' }}>
-                <h2>Banco ({gameState === 'gameOver' || gameState === 'dealerTurn' ? score.dealer : '?'})</h2>
+                <h2 style={{ fontSize: '2.5rem', margin: '8px 0' }}>Banco ({gameState === 'gameOver' || gameState === 'dealerTurn' ? score.dealer : '?'})</h2>
                 <div style={handStyle}>
                     {dealerHand.map((card, index) => {
                         if (index === 0 && gameState === 'playerTurn') {
@@ -303,7 +303,7 @@ export default function BlackJack({ onGameStart, isGameActive }) {
             </div>
 
             <div style={{ textAlign: 'center', margin: '20px 0' }}>
-                <h1 style={{ textShadow: '2px 2px 4px #000' }}>{message}</h1>
+                <h1 style={{ textShadow: '3px 3px 6px #000', fontSize: '3.5rem', margin: '10px 0' }}>{message}</h1>
 
                 {gameState === 'initial' || gameState === 'gameOver' ? (
                     <button onClick={startNewGame} style={redButtonStyle} onMouseDown={e => e.currentTarget.style.transform = 'translateY(4px)'} onMouseUp={e => e.currentTarget.style.transform = 'translateY(0)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
@@ -323,7 +323,7 @@ export default function BlackJack({ onGameStart, isGameActive }) {
                         <img key={index} src={card.image} alt={`${card.rank} of ${card.suit}`} className="card-enter" style={cardStyle} />
                     ))}
                 </div>
-                <h2>Tu ({score.player})</h2>
+                <h2 style={{ fontSize: '2.5rem', margin: '8px 0' }}>Tu ({score.player})</h2>
             </div>
         </div>
     );

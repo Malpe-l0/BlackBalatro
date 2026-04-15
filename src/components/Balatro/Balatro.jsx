@@ -124,7 +124,7 @@ export default function Balatro({
     useEffect(() => {
         if (!containerRef.current) return;
         const container = containerRef.current;
-        const renderer = new Renderer();
+        const renderer = new Renderer({ dpr: 1 });
         const gl = renderer.gl;
         gl.clearColor(0, 0, 0, 1);
 
